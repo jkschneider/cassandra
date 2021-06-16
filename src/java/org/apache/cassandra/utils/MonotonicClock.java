@@ -84,7 +84,7 @@ public interface MonotonicClock
                 try
                 {
                     logger.debug("Using custom clock implementation: {}", sclock);
-                    return (MonotonicClock) Class.forName(sclock).newInstance();
+                    return (MonotonicClock) Class.forName(sclock).getDeclaredConstructor().newInstance();
                 }
                 catch (Exception e)
                 {
@@ -117,7 +117,7 @@ public interface MonotonicClock
                     {
                     }
 
-                    return clazz.newInstance();
+                    return clazz.getDeclaredConstructor().newInstance();
                 }
                 catch (Exception e)
                 {
